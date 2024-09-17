@@ -25,12 +25,12 @@ class ScrollbarExample extends StatelessWidget {
         child: Scrollbar(
           controller: _verticalScroll,
           thumbVisibility: true,
-          child: SingleChildScrollView(
-            controller: _verticalScroll,
-            scrollDirection: Axis.vertical,
-            child: Scrollbar(
-              controller: _horizontalScroll,
-              thumbVisibility: true,
+          child: Scrollbar(
+            controller: _horizontalScroll,
+            thumbVisibility: true,
+            notificationPredicate: (notification) => notification.depth == 1,
+            child: SingleChildScrollView(
+              controller: _verticalScroll,
               child: SingleChildScrollView(
                 controller: _horizontalScroll,
                 scrollDirection: Axis.horizontal,
